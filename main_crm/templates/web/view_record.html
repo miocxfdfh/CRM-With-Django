@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="card shadow-lg border-0 rounded-4" style="width: 26rem;">
+        
+        <div class="card-body">
+            <h4 class="card-title mb-3 text-center">
+               <span class="id-number"> <i class="fa fa-user" aria-hidden="true"></i> </span> {{ record.first_name|capfirst }} {{ record.last_name|capfirst }}
+            </h4>
+            <hr style="border: 1px solid black;">
+
+            <hr>
+
+            <p><strong>Phone :</strong> {{ record.phone }}</p>
+            <p><strong>Cateqory :</strong> {{ record.Cateqory }}</p>
+            <p><strong>Address :</strong> {{ record.address }}</p>
+            <p><strong>Tall :</strong> {{ record.tall }}</p>
+            <p><strong>Weight :</strong> {{ record.wedight }}</p>
+            <p><strong>Creation Date :</strong> {{ record.cteated_at }}</p>
+
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{% url 'update' record.id%}" 
+                   class="btn btn-outline-dark w-50 me-2">
+                   Edit
+                   &nbsp;
+                   <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+
+                <a  onclick="return confirm('Are you sure')" href="{% url 'delete' record.id%}" 
+                   class="btn btn-outline-danger w-50">
+                   Delete
+                   &nbsp;
+                   <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <div class="mt-3">
+                <a href="{% url 'dashboard' %}" class="btn btn-outline-dark w-100">
+                    Back
+                    &nbsp;
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<style>
+    strong{
+        color: black;
+    }
+    p{
+        font-size: large;
+    }
+    .id-number{
+        color: black;
+        padding: 5px;
+    }
+</style>
+{% endblock %}

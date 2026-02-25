@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<div class="text-center mt-1">
+    <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Frist name</th>
+          <th scope="col">Last name</th>
+          <th scope="col">Cateqory</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Tall</th>
+          <th scope="col">Wedight</th>
+          <th scope="col">Address</th>
+          <th scope="col">Date</th>
+          <th scope="col">View</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if results %}
+        {% for record in results%}
+        <tr>
+          <td scope="row">{{record.id}}</td>
+          <td scope="row">{{record.first_name}}</td>
+          <td scope="row">{{record.last_name}}</td>
+          <td scope="row">{{record.Cateqory}}</td>
+          <td scope="row">{{record.phone}}</td>
+          <td scope="row">{{record.tall}}</td>
+          <td scope="row">{{record.wedight}}</td>
+          <td scope="row">{{record.address}}</td>
+          <td scope="row">{{record.cteated_at}}</td>
+          <td scope="row"><a href="{% url 'view' record.id%}" class=" btn btn-outline-primary btn-sm" >View</a></td>
+        </tr>
+        {% endfor%}
+        {% else %}
+        <tr>
+          <td colspan="110" class="text-center">
+            <div style="background-color: rgb(241, 241, 9);" class="alert alert-warning" role="alert">
+             <h3> Not Found "{{query}}".</h3>
+            </div>
+            </td>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
+</div>
+{% endblock%}
